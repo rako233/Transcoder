@@ -36,7 +36,7 @@ class Transcoder:
 
     def run(self):
         if self._build_dir_structure():
-            os.system(f'ffmpeg -i {self.file}  -c:v copy -c:a pcm_s24be {self.get_destination_file_path()}')
+            os.system(f'ffmpeg -i "{self.file}"  -c:v copy -c:a pcm_s16be "{self.get_destination_file_path()}"')
 
 if  __name__ == '__main__':
     parser = argparse.ArgumentParser(description='A software used by watcher')
@@ -56,7 +56,7 @@ if  __name__ == '__main__':
         print(f'\nvideo file \'{args.file}\' doesn\'t exists or isn\'t a file!\n', file=sys.stderr)
         exit(0)
 
-    if (videofile.suffix not in  ['.mpg','.mkv', '.mov', '.mp4']):
+    if (videofile.suffix not in  ['.mpg','.mkv', '.mov', '.mp4', '.MP4', '.MPG','.MKV','.MOV']):
         print(f'\nvideo file \'{args.file}\' doesn\'t have the right suffix', file=sys.stderr)
         exit(0)
 

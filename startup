@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -f /config/watcher.ini ]; then
+    cp /watcher/watcher.ini /config
+fi 
+
+python3 /watcher/watcher.py -c /config/watcher.ini debug
+
+
